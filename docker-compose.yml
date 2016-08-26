@@ -1,0 +1,7 @@
+version: "2"
+services:
+  importer: 
+    build: .
+    volumes:
+      - .:/usr/src/app
+    command: python import.py
