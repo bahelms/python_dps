@@ -1,1 +1,1 @@
-requests
+pyyaml == 3.11
