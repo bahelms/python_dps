@@ -1,9 +1,16 @@
 version: "2"
 services:
-  importer: 
+  dps: 
     build: .
     volumes:
       - .:/usr/src/app
     environment:
       PYTHONPATH: "/usr/src/app"
-    command: python import.py
+    links:
+      - postgres
+    command: python dps.py
+
+  postgres:
+    image: postgres
+    ports:
+      - "5432:5432"
