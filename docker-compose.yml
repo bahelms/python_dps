@@ -8,7 +8,7 @@ services:
       PYTHONPATH: "/usr/src/app"
     links:
       - postgres
-    command: ./tasks/start_dps.sh
+    command: ./bin/setup_and_start_app.sh
 
   postgres:
     image: postgres

@@ -1,5 +1,5 @@
 import unittest
-from sanitizer import sanitize
+from dps.sanitizer import sanitize
 
 class SanitizerTest(unittest.TestCase):
     def setUp(self):
@@ -18,5 +18,4 @@ class SanitizerTest(unittest.TestCase):
     def test_empty_strings_are_converted_to_None(self):
         self.assertEqual(None, sanitize(self.record)[4])
 
-if __name__ == "__main__":
-    unittest.main()
+unittest.main()
