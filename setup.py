@@ -1,4 +1,5 @@
 from sqlalchemy import create_engine, MetaData, Table, Column, Integer, String
+from dps.models import Base, spec_attribute
 
 db_conf = "postgres://postgres:postgres@postgres/dps"
 engine = create_engine(db_conf, echo=True)
@@ -31,11 +32,6 @@ Table("hspecatt", metadata,
     Column("hadesc", String),
     schema="source")
 
-Table("spec_attributes", metadata,
-    Column("id", Integer, primary_key=True),
-    Column("division", String),
-    Column("code", String),
-    Column("description", String))
-
+Base.metadata.create_all(engine)
 metadata.create_all(engine)
 

@@ -8,7 +8,7 @@ class SanitizerTest(unittest.TestCase):
             2: "  hey",
             3: "there   ",
             4: " "
-        }
+            }
 
     def test_surrounding_whitespace_is_removed(self):
         self.assertEqual("Bob's Burgers", sanitize(self.record)[1])
@@ -18,4 +18,5 @@ class SanitizerTest(unittest.TestCase):
     def test_empty_strings_are_converted_to_None(self):
         self.assertEqual(None, sanitize(self.record)[4])
 
-unittest.main()
+if __name__ == "__main__":
+    unittest.main()
