@@ -24,12 +24,12 @@ engine.execute("create schema if not exists source").close()
 # Create tables
 metadata = MetaData()
 
-Table("hspecatt", metadata,
+Table("specatt", metadata,
     Column("id", Integer, primary_key=True),
-    Column("hadlcd", String),
-    Column("hadiv", String),
-    Column("haspec", String),
-    Column("hadesc", String),
+    Column("sadlcd", String),
+    Column("sadiv", String),
+    Column("sacode", String),
+    Column("sadesc", String),
     schema="source")
 
 Base.metadata.create_all(engine)

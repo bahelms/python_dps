@@ -1,0 +1,7 @@
+specatt:
+  public_table: spec_attributes
+  fields: 
+    SADLCD: deleted_at
+    SADIV: division
+    SACODE: code
+    SADESC: description
