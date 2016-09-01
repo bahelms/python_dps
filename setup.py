@@ -1,5 +1,5 @@
 from sqlalchemy import create_engine, MetaData, Table, Column, Integer, String
-from dps.models import Base, spec_attribute
+from dps.models import Base, spec_attribute, specatt
 
 db_conf = "postgres://postgres:postgres@postgres/dps"
 engine = create_engine(db_conf, echo=True)
@@ -22,16 +22,5 @@ else:
 engine.execute("create schema if not exists source").close()
 
 # Create tables
-metadata = MetaData()
-
-Table("specatt", metadata,
-    Column("id", Integer, primary_key=True),
-    Column("sadlcd", String),
-    Column("sadiv", String),
-    Column("sacode", String),
-    Column("sadesc", String),
-    schema="source")
-
 Base.metadata.create_all(engine)
-metadata.create_all(engine)
 
