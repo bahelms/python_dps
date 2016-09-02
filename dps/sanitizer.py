@@ -8,4 +8,4 @@ def nullify(value: str) -> str or None:
 
 def _sanitize(value: str) -> str or None:
     """Strips surrounding whitespace and converts empty strings to None"""
-    return nullify(value.strip())
+    return nullify(value.strip().lower())
