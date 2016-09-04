@@ -1,8 +1,8 @@
-from dps.models import Base
-from sqlalchemy import (Column, String, Integer, DateTime, Sequence,
-                        PrimaryKeyConstraint)
+from dps.models import Base, Model
+from datetime import datetime
+from sqlalchemy import Column, String, Integer, Sequence, PrimaryKeyConstraint
 
-class Specatt(Base):
+class Specatt(Base, Model):
     __tablename__ = "specatt"
     __table_args__ = (
         PrimaryKeyConstraint("sacode", "sadiv", name="specatt_pk"),
@@ -20,9 +20,6 @@ class Specatt(Base):
     sacode = Column(String)
     sadiv = Column(String)
     sadesc = Column(String)
-    created_at = Column(DateTime)
-    updated_at = Column(DateTime)
-    deleted_at = Column(DateTime)
 
     def transform_public(self) -> dict:
         """Transforms the data of this object into its public version dict"""
@@ -30,9 +27,4 @@ class Specatt(Base):
             "code": self.sacode,
             "division": self.sadiv,
             "description": self.sadesc,
-            "deleted_at": self.is_delete()
             }
-
-    def is_delete(self):
-        return True if self.sadlcd == "D" else None
-

@@ -1,8 +1,7 @@
-from dps.models import Base
-from sqlalchemy import (Column, String, Integer, DateTime, Sequence,
-                        PrimaryKeyConstraint)
+from dps.models import Base, Model
+from sqlalchemy import Column, String, Integer, Sequence, PrimaryKeyConstraint
 
-class SpecAttribute(Base):
+class SpecAttribute(Base, Model):
     __tablename__ = "spec_attributes"
     __table_args__ = (
         PrimaryKeyConstraint("code", "division", name="spec_attributes_pk"),
@@ -19,6 +18,3 @@ class SpecAttribute(Base):
     division = Column(String)
     code = Column(String)
     description = Column(String)
-    created_at = Column(DateTime)
-    updated_at = Column(DateTime)
-    deleted_at = Column(DateTime)
