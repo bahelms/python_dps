@@ -6,5 +6,5 @@ db_conf = "postgres://postgres:postgres@postgres/dps"
 engine = create_engine(db_conf, echo=False)
 Session = sessionmaker(bind=engine)
 
-with open("config/transformer_map.yml") as f:
+with open("config/config.yml") as f:
     config = yaml.load(f.read())

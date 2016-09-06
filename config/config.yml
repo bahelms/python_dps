@@ -1,0 +1,29 @@
+data_dir: "data"
+data_files: "*.csv"
+
+specatt:
+  schema: source
+  primary_key: [sacode, sadiv]
+  fields: 
+    sacode:
+      type: String
+    sadiv:
+      type: String
+    sadlcd:
+      type: String
+    sadesc:
+      type: String
+  public_table: spec_attributes
+  model: Specatt
+
+spec_attributes:
+  schema: public
+  primary_key: [code, division]
+  fields:
+    code:
+      type: String
+    division:
+      type: String
+    description:
+      type: String
+    model: SpecAttribute
