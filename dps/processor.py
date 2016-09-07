@@ -2,6 +2,7 @@ import csv
 import glob
 from dps import Session, config
 from dps.sanitizer import sanitize
+from dps.helpers import classify
 
 def start(directory=config["data_dir"], files=config["data_files"]):
     """Start DPS"""
