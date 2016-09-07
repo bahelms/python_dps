@@ -18,12 +18,12 @@ class SpecattIntegrationTest(unittest.TestCase):
         self.conn.close()
 
     def test_source_data_is_persisted(self):
-        processor.start(files="*_test.csv")
+        processor.start(directory="test_data")
         count = self.session.query(Specatt).count()
         self.assertEqual(count, 5)
 
     def test_public_data_is_persisted(self):
-        processor.start(files="*_test.csv")
+        processor.start(directory="test_data")
         count = self.session.query(SpecAttribute).count()
         self.assertEqual(count, 5)
 
