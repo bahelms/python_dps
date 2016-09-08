@@ -5,7 +5,7 @@ from sqlalchemy import Column, String, Integer, Sequence, PrimaryKeyConstraint
 class Specatt(Base, Model):
     __tablename__ = "specatt"
     __table_args__ = (
-        PrimaryKeyConstraint("sacode", "sadiv", name="specatt_pk"),
+        PrimaryKeyConstraint("saspec", "sadiv", name="specatt_pk"),
         {"schema": "source"}
         )
 
@@ -17,14 +17,14 @@ class Specatt(Base, Model):
         index=True)
 
     sadlcd = Column(String)
-    sacode = Column(String)
+    saspec = Column(String)
     sadiv = Column(String)
     sadesc = Column(String)
 
     def transform_public(self) -> dict:
         """Transforms the data of this object into its public version dict"""
         return {
-            "code": self.sacode,
+            "code": self.saspec,
             "division": self.sadiv,
             "description": self.sadesc,
             }

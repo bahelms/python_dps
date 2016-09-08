@@ -3,9 +3,9 @@ data_files: "*.csv"
 
 specatt:
   schema: source
-  primary_key: [sacode, sadiv]
+  primary_key: [saspec, sadiv]
   fields: 
-    sacode:
+    saspec:
       type: String
     sadiv:
       type: String

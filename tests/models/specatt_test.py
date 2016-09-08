@@ -7,7 +7,7 @@ class SpecattTest(unittest.TestCase):
         source_data = {
             "sadlcd": None,
             "sadiv": "ABC",
-            "sacode": "12",
+            "saspec": "12",
             "sadesc": "stuff"
             }
         self.active_record = Specatt(**source_data)
