@@ -5,14 +5,20 @@ from dps.models.spec_attribute import SpecAttribute
 from tests import create_test_data, remove_test_data
 
 class SpecattIntegrationTest(unittest.TestCase):
-    def setUp(self):
+    @classmethod
+    def setUpClass(cls):
         create_test_data("specatt")
+
+    @classmethod
+    def tearDownClass(cls):
+        remove_test_data()
+
+    def setUp(self):
         self.conn = engine.connect()
         self.trans = self.conn.begin()
         self.session = Session(bind=self.conn)
 
     def tearDown(self):
-        remove_test_data()
         self.session.close()
         self.trans.rollback()
         self.conn.close()

@@ -8,7 +8,7 @@ test_data_dir = "test_data"
 
 def create_test_data(entity):
     fields = config[entity]["fields"].keys()
-    row_values = [["{0} value{1}".format(field, num) for field in fields]
+    row_values = [["{0}{1}".format(field, num) for field in fields]
                     for num in range(0, 5)]
     rows = list(map(lambda row: dict(zip(fields, row)), row_values))
     csv_file = "{0}/{1}.csv".format(test_data_dir, entity)
