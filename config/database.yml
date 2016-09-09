@@ -1,0 +1,10 @@
+development: &base
+  host: postgres
+  port: 5432
+  database: dps
+  username: postgres
+  password: postgres
+
+test: 
+  <<: *base
+  database: dps_test
