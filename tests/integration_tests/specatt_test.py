@@ -1,8 +1,8 @@
 import unittest
-from dps import Session, engine, processor
+from dps import Session, processor
 from dps.models.specatt import Specatt
 from dps.models.spec_attribute import SpecAttribute
-from tests import create_test_data, remove_test_data
+from tests import db_support, create_test_data, remove_test_data
 
 class SpecattIntegrationTest(unittest.TestCase):
     @classmethod
@@ -14,7 +14,8 @@ class SpecattIntegrationTest(unittest.TestCase):
         remove_test_data()
 
     def setUp(self):
-        self.conn = engine.connect()
+        Session.configure(bind=db_support.engine)
+        self.conn = db_support.engine.connect()
         self.trans = self.conn.begin()
         self.session = Session(bind=self.conn)
 

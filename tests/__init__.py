@@ -3,8 +3,11 @@ import os
 import glob
 import shutil
 from dps import config
+from database_support import DatabaseSupport
 
 test_data_dir = "test_data"
+db_support = DatabaseSupport(env="test")
+db_support.setup()
 
 def create_test_data(entity):
     fields = config[entity]["fields"].keys()

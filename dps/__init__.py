@@ -1,10 +1,11 @@
 import yaml
-from sqlalchemy import create_engine
+import os
+from database_support import DatabaseSupport
 from sqlalchemy.orm import sessionmaker
 
-db_conf = "postgres://postgres:postgres@postgres/dps"
-engine = create_engine(db_conf, echo=False)
-Session = sessionmaker(bind=engine)
+env = os.environ.get("DPS_ENV", default="development")
+db = DatabaseSupport(env)
+Session = sessionmaker(bind=db.engine)
 
 with open("config/config.yml") as f:
     config = yaml.load(f.read())
