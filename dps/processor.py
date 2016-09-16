@@ -6,6 +6,8 @@ from dps.helpers import classify, extract_table_name
 
 def start(directory=config["data_dir"], files=config["data_files"]):
     """Start DPS"""
+    session = Session()
+
     for file_name in glob.glob("{0}/{1}".format(directory, files)):
         table = extract_table_name(file_name, directory)
 
@@ -24,7 +26,6 @@ def start(directory=config["data_dir"], files=config["data_files"]):
             for row in csv.DictReader(csv_file):
                 source_model = source_class(**sanitize(row))
                 public_model = public_class(**source_model.transform_public())
-                session = Session()
                 session.add(source_model)
                 session.add(public_model)
                 session.commit()
